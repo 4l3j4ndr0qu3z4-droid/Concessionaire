@@ -26,24 +26,30 @@ public class Automobile {
     public Color color;
     public double currentSpeed;
 
-    public void accelerate(double speed) {
-        if (currentSpeed + speed > maximumSpeed) {
+    public boolean accelerate(double speed) {
+        if (currentSpeed + speed> maximumSpeed) {
             System.out.println("No se puede acelerar: se superaria la velocidad máxima de " + maximumSpeed + "Km/h");
+            return false;
         } else {
-            currentSpeed += speed;
+            currentSpeed+= speed;
+            return true;
         }
+
     }
 
-    public void decelerate(double speed) {
-        if (currentSpeed - speed < 0) {
+    public boolean decelerate(double speed) {
+        if (currentSpeed-speed <= 0) {
             System.out.println("No se puede desacelerar menos de 0 km/h");
+            return false;
         } else {
-            currentSpeed -= speed;
+            currentSpeed-= speed;
+            return true;
         }
+
     }
 
-    public void brake() {
-        currentSpeed = 0;
+    public double brake() {
+        return currentSpeed = 0;
     }
 
     public double estimateArrivalTime(double distance) {
